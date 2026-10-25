@@ -1,0 +1,85 @@
+{
+    "type": "TooltipsPanel", "name": "minihp",
+    "fields": {
+        "priority":-8,
+        "anchor": { "x": 0.5, "y": 1 },
+        "rect": { "x": -1454, "y": -412, "width": 2952, "height": 764 },
+    },
+    "children": [
+        {
+        "type": "ButtonWidget", "name": "MinihpClose",
+        "fields": {
+            "rect": { "x": 34 }, 
+            "filename": "PANEL/hud_102/minihp_off",
+            "onClickMessage": "PanelManager:ClosePanel:minihp",
+            "tooltipString": "Disable MiniHP bar",
+            "sound": "cursor_close_window_hd",
+            "acceptsEscKeyEverywhere": false
+            }
+        },
+        {
+            "type": "ImageWidget", "name": "ManaBarBG",
+            "fields": {				
+                "rect": { "x": 1370, "y": -990, "width": 10, "height": 150, "scale": 0.8 },  
+                "filename": "PANEL/HUD_102/minimp_bg"
+                }
+            },
+            {
+            "type": "AttributeBallWidget", "name": "ManaBarMana",
+            "fields": {
+                "rect": { "x": 1370, "y": -990, "width": 10, "height": 150, "scale": 0.8 }, 
+                "attribute": "mana",
+                "minLiquidHeight": 2,
+                "maxSmoothingSeconds": 1.0,
+                "jumpSmoothingSeconds": 0.25,
+                "smoothDecrease": false,
+                "potionPreviewTransparency": 0.35,
+                "poisonHsvTransform": [ 0.3, 0.0, 0.0, 0.0 ]
+                },
+                "children": [
+                    {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                    "fields": {
+                        "filename": "PANEL/HUD_102/minimp_mana",
+                        "useAdvancedColoring": true,
+                        "hsvTransform": [ -0.3333, -0.05, -0.5, 0.0 ]
+                        }
+                    },
+					                
+                    
+                ]
+            },               
+        {
+            "type": "ImageWidget", "name": "HealthBarBG",
+            "fields": {				
+                "rect": { "x": 1356, "y": -990, "width": 10, "height": 150, "scale": 0.8 }, 
+                "filename": "PANEL/HUD_102/minihp_bg"
+                }
+        },
+        {
+            "type": "AttributeBallWidget", "name": "HealthBarLife",
+            "fields": {
+                "rect": { "x": 1356, "y": -990, "width": 10, "height": 150, "scale": 0.8 }, 
+                "attribute": "health",
+                "minLiquidHeight": 2,
+                "maxSmoothingSeconds": 1.0,
+                "jumpSmoothingSeconds": 0.25,
+                "smoothDecrease": false,
+                "potionPreviewTransparency": 0.35,
+                "poisonHsvTransform": [ 0.3, 0.0, 0.0, 0.0 ]
+                },
+                "children": [
+                    {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                    "fields": {
+                        "filename": "PANEL/HUD_102/minihp_life",
+                        "useAdvancedColoring": true,
+                        "hsvTransform": [ -0.3333, -0.05, -0.5, 0.0 ]
+                        }
+                    },
+                    
+                    
+            ]
+        }
+    ]
+}

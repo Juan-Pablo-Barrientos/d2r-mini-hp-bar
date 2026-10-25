@@ -1,0 +1,418 @@
+{
+    "basedOn": "HUDPanelHD.json",
+    "type": "HUDPanelHD", "name": "HUDPanel",
+    "fields": {
+        // Keep the HUD below the controller overlay, which itself is below all the in-game panels.
+        "priority": -7,
+        "rect": { "x": -1302, "y": -417},
+    },
+    "children": [
+        {
+            "type": "ClickCatcherWidget", "name": "BGClickCatcher"
+        },
+        {
+            "type": "AttributeBallWidget", "name": "ManaBall",
+            "fields": {
+                "rect": { "x": 2453, "y": 68, "width": 348, "height": 350 },
+            },
+            "children": [
+                {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                },
+                {
+                    "type": "ImageWidget", "name": "EdgeImage",
+                },
+                {
+                    "type": "TextBoxWidget", "name": "ValueDisplay",
+                     "fields": {
+                        "rect": { "x": 5, "y": 330 },
+                        "style": {
+                            "pointSize": "$TooltipFontSize",
+                            "alignment": { "h": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "ImageWidget", "name": "ManaBarBG",
+            "fields": {				
+                "rect": { "x": 1218, "y": -985, "width": 10, "height": 150, "scale": 0.8 },  //마나틀 조정
+                "filename": "PANEL/HUD_102/minimp_bg"
+                }
+            },
+            {
+            "type": "AttributeBallWidget", "name": "ManaBarMana",
+            "fields": {
+                "rect": { "x": 1218, "y": -985, "width": 10, "height": 150, "scale": 0.8 },  //마나바 조정
+                "attribute": "mana",
+                "minLiquidHeight": 2,
+                "maxSmoothingSeconds": 1.0,
+                "jumpSmoothingSeconds": 0.25,
+                "smoothDecrease": false,
+                "potionPreviewTransparency": 0.35,
+                "poisonHsvTransform": [ 0.3, 0.0, 0.0, 0.0 ]
+                },
+                "children": [
+                    {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                    "fields": {
+                        "filename": "PANEL/HUD_102/minimp_mana",
+                        "useAdvancedColoring": true,
+                        "hsvTransform": [ -0.3333, -0.05, -0.5, 0.0 ]
+                        }
+                    },
+					                 //마나 수치 불필요시 삭제 종료점
+                ]
+            },      
+        {
+            "type": "AttributeBallWidget", "name": "HealthBall",
+            "fields": {
+                "rect": { "x": 141, "y": 68, "width": 348, "height": 350 },
+            },
+            "children": [
+                {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                },
+                {
+                    "type": "ImageWidget", "name": "EdgeImage",
+                },
+                {
+                    "type": "TextBoxWidget", "name": "ValueDisplay",
+                     "fields": {
+                        "rect": { "x": 0, "y": 330 },
+                        "style": {
+                            "pointSize": "$TooltipFontSize",
+                            "alignment": { "h": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "ImageWidget", "name": "HealthBarBG",
+            "fields": {				
+                "rect": { "x": 1204, "y": -985, "width": 10, "height": 150, "scale": 0.8 },  //체력틀 조정
+                "filename": "PANEL/HUD_102/minihp_bg"
+                }
+            },
+            {
+            "type": "AttributeBallWidget", "name": "HealthBarLife",
+            "fields": {
+                "rect": { "x": 1204, "y": -985, "width": 10, "height": 150, "scale": 0.8 },  //체력바 조정
+                "attribute": "health",
+                "minLiquidHeight": 2,
+                "maxSmoothingSeconds": 1.0,
+                "jumpSmoothingSeconds": 0.25,
+                "smoothDecrease": false,
+                "potionPreviewTransparency": 0.35,
+                "poisonHsvTransform": [ 0.3, 0.0, 0.0, 0.0 ]
+                },
+                "children": [
+                    {
+                    "type": "AnimatedImageWidget", "name": "BallImage",
+                    "fields": {
+                        "filename": "PANEL/HUD_102/minihp_life",
+                        "useAdvancedColoring": true,
+                        "hsvTransform": [ -0.3333, -0.05, -0.5, 0.0 ]
+                        }
+                    },
+                    
+                ]
+            },
+        {
+            "type": "ImageWidget", "name": "Overlay",
+            "fields": {
+                "rect": { "x": -121, "y": 7 },
+                "filename": "Controller/HUD/HUDBase",
+            }
+        },
+        {
+            "type": "ExpBarWidget", "name": "ExpBar",
+            "fields": {
+                "rect": { "x": 537, "y": 206 },
+                "hitMargin": { "top": 10, "bottom": 7 },
+                "filename": "Controller/HUD/Expbar"
+            },
+            "children": [
+                {
+                    "type": "AnimatedImageWidget", "name": "ExpFlashLeft",
+                    "fields": {
+                        "rect": { "x": -12, "y": -7, "scale": 1.22 },
+                    },
+                },
+                {
+                    "type": "AnimatedImageWidget", "name": "ExpFlashRight",
+                    "fields": {
+                        "rect": { "x": 942, "y": -7, "scale": 1.22 },
+                    },
+                },
+            ]
+        },
+        {
+            "type": "RunButtonWidget", "name": "RunButton",
+            "fields": {
+                "rect": { "x": 2226, "y": 294 },
+                "filename": "Controller/HUD/sprint",
+                "focusOnMouseOver": false,
+            }
+        },
+        {
+            "type": "StaminaBarWidget", "name": "StaminaBar",
+            "fields": {
+                "filename": "Controller/HUD/StaminaBar",
+                "rect": { "x": 2152, "y": 300, "width": 203, "height": 43 }
+            }
+        },
+        {
+            "type": "ButtonLegendWidget", "name": "RunButtonPrompt",
+            "fields": {
+                "rect": { "x": 2254, "y": 368 },
+                "presets": [
+                    {
+                      "action": "option3",
+                    },
+                ],
+            }
+        },
+        {
+            "type": "ImageWidget", "name": "SkillSwapIndicator",
+            "fields": {
+                "filename": "Controller/HUD/SkillSwapButton",
+                "rect": { "x": 489, "y": 254 },
+            }
+        },
+        {
+            "type": "TextBoxWidget", "name": "LTButtonPrompt",
+            "fields": {
+                "rect": { "x": 471, "y": 272 },
+                "text": "\uE00D",
+            }
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton1",
+            "fields": {
+                "rect": { "x": 562, "y": 256 },
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton1"
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton1Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton1",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton2",
+            "fields": {
+                "rect": { "x": 696, "y": 256 },
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton2"
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton2Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton2",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton3",
+            "fields": {
+                "rect": { "x": 965, "y": 256 }, //org x=830
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton3",
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton3Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton3",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton4",
+            "fields": {
+                "rect": { "x": 830, "y": 256 }, //org x=965
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton4",
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton4Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton4",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton5",
+            "fields": {
+                "rect": { "x": 1099, "y": 256 },
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton5",
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton5Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton5",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "SkillSelectButtonWidget", "name": "SkillButton6",
+            "fields": {
+                "rect": { "x": 1232, "y": 256 },
+                "side": "right",
+                "skillIconFilenames": "$SkillIconFilenames",
+                "skillButton": "SkillButton6",
+            },
+            "children": [
+
+                {
+                    "type": "TextBoxWidget", "name": "QuantityText",
+                    "fields": {
+                        "rect": "$SkillQuantityTextRectController",
+                        "style": "$SkillQuantityTextStyle",
+                    }
+                },
+                {
+                    "type": "SkillButtonPromptWidget", "name": "SkillButton6Prompt",
+                    "fields": {
+                        "anchor": { "x": 0.5, "y": 1.0 },
+                        "skillButton": "SkillButton6",
+                        "style": {
+                            "alignment": { "h": "center", "v": "center" },
+                        },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "BeltWidget", "name": "Belt",
+            "fields": {
+                "rect": { "x": 1591, "y": 263, },
+                "cellPadding": { "x": 32, "y": 15 },
+                "controllerDefaultItemTransparency": 0.5,
+                "controllerColumnDefaultItems": [ "healthPotion", "manaPotion", "rejuvinationPotion", "townPortalScroll" ],
+                "focusOnMouseOver": false,
+            },
+            "children": [
+                {
+                    "type": "TextBoxWidget", "name": "HotkeyLabelTemplate",
+                    "fields": {
+                        "rect": { "x": 8, "y": 98 },
+                    }
+                },
+            ]
+        },
+        {
+            "type": "AnimatedImageWidget", "name": "LevelUpFlourish",
+            "fields": {
+                "rect": { "x": 1179, "y": -1, "scale": 1.1},
+                "filename": "PANEL/HUD_02/LevelAnimation/glow",
+                "blendMode": "black",
+                "fps": 14,
+                "loop": false,
+                "hideOnComplete": true,
+                "playing": false,
+            },
+        },
+        {
+            "type": "LevelUpButtonWidget", "name": "LevelUpButton",
+            "fields": {
+                "rect": { "x": 1411, "y": 265 },
+                "filename": "Controller/HUD/LevelUpButton",
+                "type": [ "skills", "stats", "quests" ],
+                "labels": [ "", "@strnewskl", "@strlvlup", "@SkillAndStatLevelUp" ],
+                "tooltipOffset": { "y": -6 },
+                "disabledFrame": 2,
+                "disabledTint": { "a": 1 },
+                "focusOnMouseOver": false,
+            },
+            "children": [
+                {
+                    "type": "AnimatedImageWidget", "name": "Pulse",
+                    "fields": {
+                        "rect": { "scale": 1.3 }
+                    }
+                },
+            ]
+        },
+    ]
+}
